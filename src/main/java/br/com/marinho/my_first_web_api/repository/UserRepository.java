@@ -1,5 +1,6 @@
 package br.com.marinho.my_first_web_api.repository;
 
+import br.com.marinho.my_first_web_api.handler.RequiredFieldException;
 import br.com.marinho.my_first_web_api.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +10,11 @@ import java.util.List;
 @Repository
 public class UserRepository {
     public void save(User user) {
+        if (user.getUsername() == null || user.getUsername().isBlank())
+            throw new RequiredFieldException("login");
+        if (user.getPassword() == null || user.getPassword().isBlank())
+            throw new RequiredFieldException("password");
+
         if (user.getId()==null)
             System.out.printf("SAVE - Receiving user '%s' at repository layer", user);
         else
