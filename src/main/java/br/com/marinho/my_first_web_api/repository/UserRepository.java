@@ -12,7 +12,7 @@ public class UserRepository {
         if (user.getId()==null)
             System.out.printf("SAVE - Receiving user '%s' at repository layer", user);
         else
-            System.out.println("UPDATE - Receiving user at repository layer");
+            System.out.printf("UPDATE - Receiving user '%s' at repository layer", user);
     }
 
     public void deleteById(Integer id) {
